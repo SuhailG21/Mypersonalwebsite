@@ -7,6 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
@@ -520,11 +522,11 @@ async function exportToPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
-  // Set margins
+  // Set margins and page width
   const margin = 40;
   const pageWidth = doc.internal.pageSize.getWidth();
 
-  // Title - use a clean sans-serif font
+  // Title - clean sans-serif font
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(24);
   doc.setTextColor('#2e62d9'); // Strong blue
@@ -593,6 +595,55 @@ async function exportToPDF() {
   doc.setLineWidth(1);
   doc.line(margin, boxY + boxHeight + 15, pageWidth - margin, boxY + boxHeight + 15);
 
+  // --- BEGIN Chart Generation using Chart.js ---
+
+  // Create hidden canvas for chart
+  const canvas = document.createElement('canvas');
+  canvas.width = 400;
+  canvas.height = 250;
+  canvas.style.display = 'none'; // keep hidden
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+
+  // Build the bar chart with expense names and amounts
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: expenses.map(e => e.name),
+      datasets: [{
+        label: 'Expense Amount (R)',
+        data: expenses.map(e => e.amount),
+        backgroundColor: '#2e62d9',
+      }]
+    },
+    options: {
+      responsive: false,
+      animation: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+  // Export chart to image
+  const chartImage = canvas.toDataURL('image/png');
+
+  // Remove canvas from DOM after exporting
+  canvas.remove();
+
+  // Calculate image dimensions for PDF
+  const imgProps = doc.getImageProperties(chartImage);
+  const pdfWidth = pageWidth - margin * 2;
+  const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  // Add chart image below summary box
+  const chartY = boxY + boxHeight + 30;
+  doc.addImage(chartImage, 'PNG', margin, chartY, pdfWidth, pdfHeight);
+
+  // --- END Chart ---
+
   // Prepare expenses data for the table
   const expensesData = expenses.map((e, i) => [
     i + 1,
@@ -603,60 +654,59 @@ async function exportToPDF() {
 
   const headers = [['#', 'Expense Name', 'Amount', 'Status']];
 
-  // Add table of expenses using autotable with improved styling
   doc.autoTable({
-    startY: boxY + boxHeight + 30,
-    head: headers,
-    body: expensesData,
-    theme: 'striped',
-    headStyles: {
-      fillColor: '#2e62d9',
-      textColor: '#ffffff',
-      fontStyle: 'bold',
-      fontSize: 12,
-    },
-    bodyStyles: {
-      fontSize: 11,
-      textColor: '#222222',
-    },
-    alternateRowStyles: {
-      fillColor: '#f9f9f9',
-    },
-    margin: { left: margin, right: margin },
-    columnStyles: {
-      0: { cellWidth: 20, halign: 'center' },
-      1: { cellWidth: 250 },
-      2: { cellWidth: 80, halign: 'right' },
-      3: { cellWidth: 80, halign: 'center' },
-    },
-didDrawCell: (data) => {
-  if (data.section === 'body' && data.column.index === 3) {
-    const status = data.cell.text[0];
-    const color = status === 'Paid' ? '#4caf50' : '#f44336';
+  startY: chartY + pdfHeight + 20,
+  head: headers,
+  body: expensesData,
+  tableWidth: pdfWidth,   // match graph width exactly
+  theme: 'striped',
+  headStyles: {
+    fillColor: '#2e62d9',
+    textColor: '#ffffff',
+    fontStyle: 'bold',
+    fontSize: 12,
+  },
+  bodyStyles: {
+    fontSize: 11,
+    textColor: '#222222',
+  },
+  alternateRowStyles: {
+    fillColor: '#f9f9f9',
+  },
+  margin: { left: margin, right: margin },
+  columnStyles: {
+    0: { cellWidth: 30, halign: 'center' },      // small fixed width for # column
+    1: { cellWidth: 'auto' },                     // let name column auto expand to fill space
+    2: { cellWidth: 80, halign: 'right' },        // fixed for amount
+    3: { cellWidth: 80, halign: 'center' },       // fixed for status
+  },
+  didDrawCell: (data) => {
+    if (data.section === 'body' && data.column.index === 3) {
+      const status = data.cell.text[0];
+      const color = status === 'Paid' ? '#4caf50' : '#f44336';
 
-    // Clear the cell background first (to cover default text)
-    doc.setFillColor(data.row.index % 2 === 0 ? '#ffffff' : '#f9f9f9'); // match alternating row colors
-    doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
+      // Clear cell background for custom text color
+      doc.setFillColor(data.row.index % 2 === 0 ? '#ffffff' : '#f9f9f9');
+      doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
 
-    // Draw the colored text manually
-    doc.setTextColor(color);
-    const textX = data.cell.x + data.cell.padding('left');
-    const textY = data.cell.y + data.cell.height / 2 + 3; // vertical center adjustment
-    doc.text(status, textX, textY);
+      // Draw colored text manually
+      doc.setTextColor(color);
+      const textX = data.cell.x + data.cell.padding('left');
+      const textY = data.cell.y + data.cell.height / 2 + 3; // vertical center
+      doc.text(status, textX, textY);
 
-    // Reset text color for other cells
-    doc.setTextColor('#222222');
+      // Reset text color for others
+      doc.setTextColor('#222222');
 
-    // Prevent default text rendering by clearing cell and drawing manually
-    return false; 
+      // Prevent default text rendering
+      return false;
+    }
   }
-}
+});
 
-
-  });
 
   // Footer note - small caps, light gray, centered
-  const finalY = doc.lastAutoTable.finalY || boxY + boxHeight + 30;
+  const finalY = doc.lastAutoTable.finalY || chartY + pdfHeight + 20;
   doc.setFontSize(9);
   doc.setTextColor('#999999');
   doc.setFont('helvetica', 'normal');
