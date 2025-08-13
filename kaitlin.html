@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy 24th Birthday, My Love 💖</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Great Vibes', cursive;
+        background: radial-gradient(circle at top, #ffafbd, #ffc3a0);
+        overflow-x: hidden;
+        color: #fff;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 4em;
+        margin-top: 30px;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 15px #fff, 0 0 25px #ff4da6; }
+        to { text-shadow: 0 0 25px #fff, 0 0 40px #ff4da6, 0 0 50px #ff4da6; }
+    }
+
+    .age-badge {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50px;
+        font-size: 1.5em;
+        backdrop-filter: blur(4px);
+    }
+
+    /* Carousel Styles */
+    .carousel {
+        position: relative;
+        max-width: 80%;
+        margin: 40px auto;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 1s ease;
+    }
+
+    .carousel img {
+        width: 100%;
+        max-width: 100%;
+    height: auto;
+        flex-shrink: 0;
+        border-radius: 20px;
+    }
+
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.3);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 20px;
+        z-index: 10;
+        transition: background 0.3s;
+    }
+    .carousel-btn:hover {
+        background: rgba(0,0,0,0.5);
+    }
+
+    .carousel-btn.left {
+        left: 10px;
+    }
+
+    .carousel-btn.right {
+        right: 10px;
+    }
+
+    /* Romantic message */
+    .message {
+        font-size: 2em;
+        max-width: 80%;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(6px);
+        animation: fadeIn 2s ease-in-out forwards;
+        line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating balloons */
+    .balloon {
+        position: absolute;
+        bottom: -150px;
+        width: 60px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: red;
+        animation: float 12s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* Falling hearts */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: #ff4da6;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+        }
+    }
+
+.message-container {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    margin: 20px auto;
+    position: relative;
+}
+
+.message-scroll {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%; /* Delay before message fully enters */
+    animation: scrollMessage 35s linear infinite;
+    font-size: 2em;
+    line-height: 1.5;
+}
+
+@keyframes scrollMessage {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .age-badge {
+        font-size: 1.2em;
+        padding: 8px 15px;
+    }
+
+    .carousel {
+        max-width: 95%;
+    }
+
+    .message-scroll {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .message-scroll {
+        font-size: 1.2em;
+    }
+
+    .carousel-btn {
+        padding: 8px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .message-scroll {
+        animation-duration: 50s; /* slower on mobile */
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<h1><i class="fa-solid fa-heart"></i> Happy 24th Birthday, My Love <i class="fa-solid fa-heart"></i></h1>
+<div class="age-badge"><i class="fa-solid fa-cake-candles"></i> 24 Years Young <i class="fa-solid fa-champagne-glasses"></i></div>
+
+<div class="carousel">
+    <button class="carousel-btn left"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="carousel-track">
+        <!-- Replace these with your own romantic pictures -->
+        <img src="pic1.jpg" alt="Us together 1">
+        <img src="pic2.jpg" alt="Us together 2">
+        <img src="pic3.jpg" alt="Us together 3">
+    </div>
+    <button class="carousel-btn right"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<!-- Replace the existing .message div with this -->
+<div class="message-container">
+  <div class="message-scroll">
+    My dearest love, today we celebrate you — the most beautiful soul I have ever known.  
+    For 24 years, the world has been brighter because you are in it, and my life has been forever changed since the day I met you.  
+    I promise to cherish you, love you, and make every moment special — today, tomorrow, and always.  
+    <i class="fa-solid fa-heart"></i>
+  </div>
+</div>
+
+
+<script>
+    // Carousel logic
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevBtn = document.querySelector('.carousel-btn.left');
+    const nextBtn = document.querySelector('.carousel-btn.right');
+    let currentSlide = 0;
+
+    function updateSlide(index) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlide(currentSlide);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlide(currentSlide);
+    });
+
+    setInterval(() => {
+        nextBtn.click();
+    }, 4000);
+
+    // Balloons
+    const colors = ['#ff4da6', '#ffcc00', '#66ff66', '#66ccff', '#ff6666', '#cc99ff'];
+    for (let i = 0; i < 10; i++) {
+        let balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDuration = (10 + Math.random() * 5) + 's';
+        document.body.appendChild(balloon);
+    }
+
+    // Falling hearts
+    function createHeart() {
+        const heart = document.createElement('i');
+        heart.className = 'fa-solid fa-heart heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 200);
+</script>
+
+</body>
+</html>
