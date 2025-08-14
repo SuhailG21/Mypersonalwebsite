@@ -56,12 +56,15 @@
     }
 
     .carousel img {
-        width: 100%;
-        max-width: 100%;
+    width: auto;
+    max-width: 100%;
+    max-height: 500px; /* limits height so images don’t push text away */
     height: auto;
-        flex-shrink: 0;
-        border-radius: 20px;
-    }
+    flex-shrink: 0;
+    border-radius: 20px;
+    object-fit: cover; /* keeps aspect ratio and crops nicely */
+}
+
 
     .carousel-btn {
         position: absolute;
@@ -210,7 +213,6 @@
 <body>
 
 <h1><i class="fa-solid fa-heart"></i> Happy 24th Birthday, My Love <i class="fa-solid fa-heart"></i></h1>
-<div class="age-badge"><i class="fa-solid fa-cake-candles"></i> 24 Years Young <i class="fa-solid fa-champagne-glasses"></i></div>
 
 <div class="carousel">
     <button class="carousel-btn left"><i class="fa-solid fa-chevron-left"></i></button>
