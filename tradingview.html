@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TV-style Crypto Widget</title>
+  <!-- Lightweight Charts (by TradingView) for a high quality chart API -->
+  <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    :root{
+      --bg:#0b1220;          /* deep trading view-esque navy */
+      --panel:#121826;       /* card surface */
+      --muted:#8b97b1;       /* secondary text */
+      --text:#e7eefc;        /* primary text */
+      --accent:#2962ff;      /* blue accent */
+      --up:#22c55e;          /* green */
+      --down:#ef4444;        /* red */
+      --border:#1d2536;      /* subtle borders */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:12px;}
+
+    /* Header */
+    .header{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+      background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:10px 12px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; padding-right:8px; border-right:1px solid var(--border)}
+    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#3b82f6, #8b5cf6);} 
+    .title{font-weight:700; letter-spacing:.2px}
+
+    .search{position:relative; flex:1; min-width:180px}
+    .search input{
+      width:100%; background:#0f1524; color:var(--text); border:1px solid var(--border);
+      padding:10px 12px; border-radius:10px; outline:none;
+    }
+    .suggest{
+      position:absolute; top:42px; left:0; right:0; z-index:10; background:#0f1524; border:1px solid var(--border);
+      border-radius:10px; max-height:260px; overflow:auto; display:none;
+    }
+    .suggest button{
+      width:100%; text-align:left; padding:10px 12px; background:transparent; color:var(--text);
+      border:none; cursor:pointer; display:flex; gap:10px; align-items:center;
+    }
+    .suggest button:hover{background:#0b1220}
+
+    .price-strip{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .price{font-size:20px; font-weight:700}
+    .chip{padding:4px 8px; border-radius:999px; font-weight:600; border:1px solid var(--border); color:var(--muted)}
+    .chip.pos{color:var(--up); border-color:rgba(34,197,94,.35)}
+    .chip.neg{color:var(--down); border-color:rgba(239,68,68,.35)}
+
+    .tf{margin-left:auto; display:flex; gap:6px; flex-wrap:wrap}
+    .tf button{
+      background:#0f1524; color:var(--muted); border:1px solid var(--border); padding:8px 10px; border-radius:10px; cursor:pointer;
+    }
+    .tf button.active{color:var(--text); border-color:var(--accent)}
+
+    /* Card */
+    .card{margin-top:12px; background:var(--panel); border:1px solid var(--border); border-radius:16px;}
+    .card .inner{padding:10px}
+    .grid{display:grid; grid-template-columns: 1fr 300px; gap:12px}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+
+    .chart{height:420px}
+    @media (max-width: 480px){ .chart{height:340px} }
+
+    .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
+    .stat{background:#0f1524; border:1px solid var(--border); border-radius:12px; padding:12px}
+    .stat .label{color:var(--muted); font-size:12px}
+    .stat .val{font-weight:700; font-size:16px; margin-top:6px}
+
+    .footer{color:var(--muted); font-size:12px; padding:10px 0}
+    a{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand"><div class="logo"></div><div>
+        <div class="title" id="coin-name">Bitcoin</div>
+        <div class="muted" id="coin-symbol" style="color:var(--muted); font-size:12px">BTC / USD</div>
+      </div></div>
+
+      <div class="search">
+        <input id="search" placeholder="Search any cryptocurrency (e.g., bitcoin, solana)…" autocomplete="off" />
+        <div class="suggest" id="suggest"></div>
+      </div>
+
+      <div class="price-strip">
+        <div class="price" id="price">$0.00</div>
+        <div class="chip" id="mcap">MCap —</div>
+        <div class="chip" id="vol">24h Vol —</div>
+        <div class="chip" id="change">24h —</div>
+      </div>
+
+      <div class="tf" id="tf">
+        <button data-days="1" class="active">1D</button>
+        <button data-days="7">1W</button>
+        <button data-days="30">1M</button>
+        <button data-days="90">3M</button>
+        <button data-days="365">1Y</button>
+        <button data-days="max">MAX</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <div id="chart" class="chart"></div>
+        <div class="grid" style="margin-top:12px">
+          <div class="footer">Live market data via public CoinGecko API. Chart updates every ~10 seconds. This is a community-built widget, not affiliated with TradingView.</div>
+          <div class="stats">
+            <div class="stat"><div class="label">24h High</div><div class="val" id="high">—</div></div>
+            <div class="stat"><div class="label">24h Low</div><div class="val" id="low">—</div></div>
+            <div class="stat"><div class="label">24h Change</div><div class="val" id="chg">—</div></div>
+            <div class="stat"><div class="label">Circulating Supply</div><div class="val" id="supply">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // ===== Utilities =====
+  const fmtUSD = (n) => n==null? '—' : new Intl.NumberFormat('en-US', {style:'currency', currency:'USD', maximumFractionDigits: n<1? 6: 2}).format(n);
+  const fmtNum = (n) => n==null? '—' : new Intl.NumberFormat('en-US', {maximumFractionDigits: 2}).format(n);
+  const debounce = (fn, ms=250) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); } };
+
+  // ===== DOM refs =====
+  const el = (id) => document.getElementById(id);
+  const coinName = el('coin-name');
+  const coinSymbol = el('coin-symbol');
+  const priceEl = el('price');
+  const changeChip = el('change');
+  const mcapChip = el('mcap');
+  const volChip = el('vol');
+  const highEl = el('high');
+  const lowEl = el('low');
+  const chgEl = el('chg');
+  const supplyEl = el('supply');
+  const suggestBox = el('suggest');
+  const searchInput = el('search');
+
+  // ===== Global state =====
+  let currentId = 'bitcoin';
+  let currentSymbol = 'BTC';
+  let priceTimer = null;
+  let chartTimer = null;
+  let chart, series;
+
+  // ===== Setup chart =====
+  function initChart(){
+    if (chart) return; // once
+    chart = LightweightCharts.createChart(document.getElementById('chart'), {
+      layout: {
+        background: { type: 'solid', color: getComputedStyle(document.body).getPropertyValue('--panel').trim() },
+        textColor: getComputedStyle(document.body).getPropertyValue('--text').trim(),
+      },
+      grid: { vertLines: { color: '#1d2536' }, horzLines: { color: '#1d2536' } },
+      rightPriceScale: { borderVisible: false },
+      timeScale: { borderVisible: false, timeVisible: true, secondsVisible: false },
+      crosshair: { mode: 1 },
+      handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true },
+      handleScale: { axisPressedMouseMove: true, pinch: true, mouseWheel: true },
+      autoSize: true,
+    });
+    series = chart.addAreaSeries({
+      lineWidth: 2,
+      topColor: 'rgba(41,98,255,0.35)',
+      bottomColor: 'rgba(41,98,255,0.05)',
+    });
+    window.addEventListener('resize', ()=>chart && chart.timeScale().fitContent());
+  }
+
+  // ===== Data fetching (CoinGecko) =====
+  const CG = {
+    base: 'https://api.coingecko.com/api/v3',
+    coinsList: async () => {
+      const r = await fetch(`${CG.base}/coins/list?include_platform=false`);
+      if (!r.ok) throw new Error('Failed to fetch coins list');
+      return r.json();
+    },
+    marketChart: async (id, vs='usd', days='1', interval='hourly') => {
+      const url = `${CG.base}/coins/${id}/market_chart?vs_currency=${vs}&days=${days}&interval=${interval}`;
+      const r = await fetch(url);
+      if (!r.ok) throw new Error('Failed to fetch market chart');
+      return r.json(); // { prices: [[ts, price], ...], market_caps: [...], total_volumes: [...] }
+    },
+    simplePrice: async (ids, vs='usd') => {
+      const url = `${CG.base}/simple/price?ids=${ids}&vs_currencies=${vs}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`;
+      const r = await fetch(url);
+      if (!r.ok) throw new Error('Failed to fetch price');
+      return r.json();
+    },
+    coin: async (id) => {
+      const r = await fetch(`${CG.base}/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`);
+      if (!r.ok) throw new Error('Failed to fetch coin detail');
+      return r.json();
+    }
+  };
+
+  // ===== UI: search & suggestions =====
+  let allCoins = [];
+  async function loadCoins(){
+    try {
+      allCoins = await CG.coinsList();
+    } catch (e){ console.error(e); }
+  }
+
+  function normalize(str){ return str.toLowerCase(); }
+  function suggest(q){
+    q = normalize(q);
+    if (!q){ suggestBox.style.display='none'; return; }
+    const candidates = allCoins.filter(c => c.id.includes(q) || c.symbol.includes(q) || c.name.toLowerCase().includes(q)).slice(0, 30);
+    if (!candidates.length){ suggestBox.style.display='none'; return; }
+    suggestBox.innerHTML = candidates.map(c => `<button data-id="${c.id}" data-symbol="${c.symbol.toUpperCase()}"><span style='opacity:.8'>${c.symbol.toUpperCase()}</span> ${c.name}</button>`).join('');
+    suggestBox.style.display='block';
+  }
+
+  suggestBox.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const id = btn.getAttribute('data-id');
+    const sym = btn.getAttribute('data-symbol');
+    chooseCoin(id, sym);
+    suggestBox.style.display='none';
+    searchInput.value = '';
+  });
+
+  searchInput.addEventListener('input', debounce(e=> suggest(e.target.value), 120));
+  document.addEventListener('click', (e)=>{
+    if (!suggestBox.contains(e.target) && e.target!==searchInput){ suggestBox.style.display='none'; }
+  });
+
+  // ===== Choose coin =====
+  async function chooseCoin(id, sym){
+    currentId = id; currentSymbol = sym || currentSymbol;
+    coinName.textContent = id.replace(/-/g,' ').replace(/\b\w/g, m=>m.toUpperCase());
+    coinSymbol.textContent = `${currentSymbol} / USD`;
+    await refreshAll();
+  }
+
+  // ===== Load & update chart =====
+  async function loadChart(days){
+    try{
+      const interval = (days==='1'||days==='7') ? 'hourly' : 'daily';
+      const data = await CG.marketChart(currentId, 'usd', days, interval);
+      const seriesData = data.prices.map(([ts, price])=>({ time: Math.floor(ts/1000), value: price }));
+      series.setData(seriesData);
+      chart.timeScale().fitContent();
+      // update side stats
+      const hi = Math.max(...data.prices.map(p=>p[1]));
+      const lo = Math.min(...data.prices.map(p=>p[1]));
+      highEl.textContent = fmtUSD(hi);
+      lowEl.textContent = fmtUSD(lo);
+      volChip.textContent = `24h Vol ${fmtUSD(data.total_volumes.at(-1)?.[1])}`;
+    }catch(e){ console.error(e); }
+  }
+
+  // ===== Live price polling =====
+  async function updatePrice(){
+    try{
+      const p = await CG.simplePrice(currentId, 'usd');
+      const row = p[currentId];
+      if (!row) return;
+      const price = row.usd;
+      priceEl.textContent = fmtUSD(price);
+      changeChip.textContent = `24h ${row.usd_24h_change>0? '+' : ''}${row.usd_24h_change.toFixed(2)}%`;
+      changeChip.classList.toggle('pos', row.usd_24h_change>=0);
+      changeChip.classList.toggle('neg', row.usd_24h_change<0);
+      mcapChip.textContent = `MCap ${fmtUSD(row.usd_market_cap)}`;
+      chgEl.textContent = `${row.usd_24h_change>0? '+' : ''}${row.usd_24h_change.toFixed(2)}%`;
+      // supply requires coin() because simplePrice doesn't include it
+      CG.coin(currentId).then(c=>{
+        supplyEl.textContent = c.market_data?.circulating_supply ? `${fmtNum(c.market_data.circulating_supply)} ${c.symbol.toUpperCase()}` : '—';
+      }).catch(()=>{});
+    }catch(e){ console.error(e); }
+  }
+
+  function startLoops(){
+    clearInterval(priceTimer); clearInterval(chartTimer);
+    priceTimer = setInterval(updatePrice, 10000); // 10s
+    chartTimer = setInterval(()=>{
+      const active = document.querySelector('#tf button.active');
+      const days = active?.dataset.days || '1';
+      loadChart(days);
+    }, 15000); // 15s
+  }
+
+  async function refreshAll(){
+    await updatePrice();
+    const active = document.querySelector('#tf button.active');
+    await loadChart(active?.dataset.days || '1');
+    startLoops();
+  }
+
+  // ===== Timeframe controls =====
+  document.getElementById('tf').addEventListener('click', (e)=>{
+    const btn = e.target.closest('button'); if (!btn) return;
+    document.querySelectorAll('#tf button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    loadChart(btn.dataset.days);
+  });
+
+  // ===== Init =====
+  (async function init(){
+    initChart();
+    await loadCoins();
+    await chooseCoin('bitcoin','BTC');
+  })();
+})();
+</script>
+</body>
+</html>
