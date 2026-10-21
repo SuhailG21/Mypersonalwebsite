@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6fc">
+  <meta name="description" content="A personal portfolio template for an independent software developer.">
+  <meta property="og:title" content="Developer Portfolio — Personal Site">
+  <meta property="og:description" content="An independent developer's corner of the internet.">
+  <meta property="og:type" content="website">
+  <title>Developer Portfolio — Personal Site</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('developer-portfolio-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme =
+        savedTheme === 'dark' || savedTheme === 'light'
+          ? savedTheme
+          : systemPrefersDark
+            ? 'dark'
+            : 'light';
+    } catch {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+  <link rel="icon" href="/developer-portfolio/assets/mark-CAi0EvyY.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="/developer-portfolio/assets/index-BqaUqirn.js"></script>
+  <link rel="stylesheet" crossorigin href="/developer-portfolio/assets/index-msDjFYDe.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Your Name, home"><span class="wordmark-mark">YN</span><span>Your Name<span class="wordmark-dot">.</span></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Background</a><a href="#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.6 8.6 0 1 0 20.2 15.3Z"></path></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="hero section-wrap" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Software developer <span class="eyebrow-divider">//</span> <span class="replace">[Your city]</span></p>
+        <h1 id="hero-title">I write code,<br>solve problems,<br><em>ship software.</em></h1>
+        <p class="hero-intro">Hello, I’m <strong>[Your name]</strong> — a software developer working with [your languages, tools, or areas of focus]. I care about readable code and useful outcomes.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#work">View selected builds <span aria-hidden="true">↓</span></a><a class="text-link" href="#contact">Contact me <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-footnote"><span>BUILDING NOW: [PROJECT OR TECHNOLOGY]</span><span class="tiny-line"></span><span>STACK: [LANGUAGE / FRAMEWORK]</span></div>
+      </div>
+      <div class="hero-art reveal" aria-label="Portrait placeholder artwork">
+        <div class="hero-code-panel" aria-hidden="true">
+          <div class="code-panel-head"><span class="code-path">~/portfolio / profile.ts</span><span class="code-mark">TS</span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-variable">work</span> = {
+  goal: <span class="code-string">"solve real problems"</span>,
+  status: <span class="code-string">"in progress"</span>
+};</code></pre>
+          <div class="code-panel-foot"><span>BUILD</span><span>TEST</span><span>ITERATE</span></div>
+        </div>
+        <div class="portrait-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MDAgOTAwIj48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0iIzE3M2E2OCIvPjxjaXJjbGUgY3g9IjUyMiIgY3k9IjE3NSIgcj0iMTM1IiBmaWxsPSIjZGJlOWZmIi8+PHBhdGggZD0iTTAgNjU1YzEyMi05MiAyNDUtMTMxIDM2OS05MXMyMzIgNDIgMzMxLTJ2MzM4SDBaIiBmaWxsPSIjMTAyOTRiIi8+PHBhdGggZD0iTTExOSA5MDBjMTctMjE2IDk2LTMzNiAyMzMtMzU4IDE0Ny0yMyAyNDIgMTEwIDI1MCAzNThaIiBmaWxsPSIjNGU4MGNhIi8+PGVsbGlwc2UgY3g9IjM1NSIgY3k9IjM3NiIgcng9IjEzMiIgcnk9IjE1OCIgZmlsbD0iI2U0Yjg5OSIvPjxwYXRoIGQ9Ik0yMjAgMzcxYy04LTEyNCA1MS0yMTUgMTU1LTIxOSAxMjUtNSAxNzggODkgMTU0IDIwNS0zOS0yNC03Mi01OC04NC0xMDEtNDcgNTEtMTI4IDg0LTIyNSA4N1oiIGZpbGw9IiMyNDJkMjkiLz48cGF0aCBkPSJNMjY5IDM5N2MxOSAxMCAzNyAxMCA1NCAwbTU3IDBjMTggMTAgMzcgMTAgNTUgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGMzOTMyIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0zMjcgNDczYzIwIDE1IDQyIDE1IDYxIDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzlkNTU0OCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjA2IDI4N2MtMzAtMzAtNjgtMjktOTQtM20zOTAtMmMzMS0zMiA2Ny0yOSA5MS0zIiBmaWxsPSJub25lIiBzdHJva2U9IiNkYmU5ZmYiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjQwIiB5PSI4NDAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiNmM2Y2ZmMiIGxldHRlci1zcGFjaW5nPSIyIj5ZT1VSIFBPUlRSQUlUIEhFUkU8L3RleHQ+PHBhdGggZD0iTTQyIDg1OGgxNDIiIHN0cm9rZT0iIzRlODBjYSIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+Cg==" alt="Replace with a portrait of yourself"></div>
+        <div class="image-caption"><span class="caption-index">01</span><span>PROFILE PHOTO<br><small>[Replace with your image]</small></span></div>
+      </div>
+      <div class="hero-side-note" aria-hidden="true">CODE · TEST · SHIP · LEARN</div>
+    </section>
+
+    <div class="stack-strip section-wrap" aria-label="Technology stack placeholders">
+      <span class="stack-prefix">// STACK</span>
+      <span class="stack-item">[LANGUAGE]</span><span class="stack-item">[FRAMEWORK]</span><span class="stack-item">[DATABASE]</span><span class="stack-item">[TOOLS]</span>
+      <span class="stack-note">Replace with your toolkit</span>
+    </div>
+
+    <section class="about section-wrap section-pad" id="about">
+      <div class="section-label reveal"><span>01 / A little about me</span><span class="label-rule"></span><span>THE PERSON, NOT THE CV</span></div>
+      <div class="about-grid">
+        <h2 class="display-heading reveal">How I approach<br>a <em>problem.</em></h2>
+        <div class="about-body reveal">
+          <p class="lead">Understand the problem. Then choose the <em>right tools.</em></p>
+          <p>[Write a short, personal introduction here. Share what drew you to software, how you like to work, and the kind of problems you enjoy solving. Keep it in your own voice.]</p>
+          <p>I work in small, reviewable steps: understand the constraints, build a useful first version, test it, then improve it.</p>
+          <a class="underlined-link" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="strengths">
+        <div class="strengths-intro reveal"><span class="mini-kicker">HOW I WORK</span><h3>Good habits<br>make good software.</h3></div>
+        <div class="strength-list">
+          <article class="strength reveal"><span class="strength-no">01</span><div><h4>Readable, maintainable code</h4><p>[Add how you keep your work clear and reliable.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal"><span class="strength-no">02</span><div><h4>Practical problem solving</h4><p>[Describe how you break complex problems into useful steps.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal"><span class="strength-no">03</span><div><h4>Clear technical communication</h4><p>[Share how you work with teammates and explain decisions.]</p></div><span class="strength-mark">↗</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work section-pad" id="work">
+      <div class="section-wrap">
+        <div class="section-label section-label-light reveal"><span>02 / Selected work</span><span class="label-rule"></span><span>A FEW THINGS I’VE MADE</span></div>
+        <div class="work-heading reveal"><h2 class="display-heading">Selected<br><em>builds.</em></h2><p>Projects, experiments, and tools.<br><span>[Replace these placeholders with your own work.]</span></p></div>
+        <div class="project-grid">
+          <article class="project project-feature reveal">
+            <a class="project-image" href="#contact" aria-label="Discuss project one"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjIwIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNMjQgMEgwVjI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTQ3NjgiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48bGluZWFyR3JhZGllbnQgaWQ9Imdsb3ciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNGU4MGNhIiBzdG9wLW9wYWNpdHk9Ii4zMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzEwMjQzZCIgc3RvcC1vcGFjaXR5PSIwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI2MjAiIGZpbGw9IiMwZTFjMzAiLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjYyMCIgZmlsbD0idXJsKCNncmlkKSIvPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNjIwIiBmaWxsPSJ1cmwoI2dsb3cpIi8+PHJlY3QgeD0iNTQiIHk9IjQyIiB3aWR0aD0iNzkyIiBoZWlnaHQ9IjUyNCIgcng9IjUiIGZpbGw9IiMxMDFjMmUiIHN0cm9rZT0iIzRlODBjYSIgc3Ryb2tlLW9wYWNpdHk9Ii42Ii8+PHJlY3QgeD0iNTQiIHk9IjQyIiB3aWR0aD0iNzkyIiBoZWlnaHQ9IjQyIiByeD0iNSIgZmlsbD0iIzFhMmE0MCIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iNjMiIHI9IjQiIGZpbGw9IiM3ZGFhZjAiLz48Y2lyY2xlIGN4PSI5MSIgY3k9IjYzIiByPSI0IiBmaWxsPSIjNjE3ODk1Ii8+PGNpcmNsZSBjeD0iMTA2IiBjeT0iNjMiIHI9IjQiIGZpbGw9IiM2MTc4OTUiLz48dGV4dCB4PSIxMzAiIHk9IjY3IiBmaWxsPSIjYzBjY2RmIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIj5hdGxhcyAvIGRhc2hib2FyZDwvdGV4dD48dGV4dCB4PSI3ODMiIHk9IjY3IiBmaWxsPSIjOTFiOWY0IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIj5CVUlMRCAwMTwvdGV4dD48cmVjdCB4PSI1NCIgeT0iODQiIHdpZHRoPSIxNzQiIGhlaWdodD0iNDgyIiBmaWxsPSIjMTQyNDNiIi8+PHRleHQgeD0iNzYiIHk9IjExOCIgZmlsbD0iIzdkYWFmMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSI+Jmx0OyBBVExBUyAvJmd0OzwvdGV4dD48cmVjdCB4PSI3MiIgeT0iMTQ1IiB3aWR0aD0iMTM4IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iIzI0NDU2YyIvPjx0ZXh0IHg9Ijg4IiB5PSIxNjQiIGZpbGw9IiNmNGY4ZmYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPm92ZXJ2aWV3PC90ZXh0Pjx0ZXh0IHg9Ijg4IiB5PSIyMDIiIGZpbGw9IiM5ZWFmYzYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPnByb2plY3RzPC90ZXh0Pjx0ZXh0IHg9Ijg4IiB5PSIyMzYiIGZpbGw9IiM5ZWFmYzYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPmFjdGl2aXR5PC90ZXh0Pjx0ZXh0IHg9Ijg4IiB5PSIyNzAiIGZpbGw9IiM5ZWFmYzYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPnNldHRpbmdzPC90ZXh0Pjx0ZXh0IHg9IjI1OCIgeT0iMTI1IiBmaWxsPSIjZjRmOGZmIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjE3Ij5Qcm9qZWN0IG92ZXJ2aWV3PC90ZXh0Pjx0ZXh0IHg9IjI1OCIgeT0iMTQ3IiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIj5MYXRlc3Qgc3lzdGVtIG1ldHJpY3MgYW5kIGFjdGl2aXR5PC90ZXh0PjxyZWN0IHg9IjcxOCIgeT0iMTA1IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjMwIiByeD0iMiIgZmlsbD0iIzRlODBjYSIvPjx0ZXh0IHg9Ijc0NCIgeT0iMTI0IiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIj5ERVBMT1k8L3RleHQ+PGcgZmlsbD0iIzE4MmI0MyIgc3Ryb2tlPSIjMzM0ZTcwIj48cmVjdCB4PSIyNTgiIHk9IjE2OCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI3OCIgcng9IjMiLz48cmVjdCB4PSI0NDgiIHk9IjE2OCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI3OCIgcng9IjMiLz48cmVjdCB4PSI2MzgiIHk9IjE2OCIgd2lkdGg9IjE4NCIgaGVpZ2h0PSI3OCIgcng9IjMiLz48L2c+PGcgZmlsbD0iIzllYWZjNiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSI5Ij48dGV4dCB4PSIyNzQiIHk9IjE5MCI+QUNUSVZFIFBST0pFQ1RTPC90ZXh0Pjx0ZXh0IHg9IjQ2NCIgeT0iMTkwIj5CVUlMRCBTVUNDRVNTPC90ZXh0Pjx0ZXh0IHg9IjY1NCIgeT0iMTkwIj5PUEVOIElTU1VFUzwvdGV4dD48L2c+PGcgZmlsbD0iI2Y0ZjhmZiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIyMiI+PHRleHQgeD0iMjc0IiB5PSIyMjUiPjA4PC90ZXh0Pjx0ZXh0IHg9IjQ2NCIgeT0iMjI1Ij45OC40JTwvdGV4dD48dGV4dCB4PSI2NTQiIHk9IjIyNSI+MDM8L3RleHQ+PC9nPjxyZWN0IHg9IjI1OCIgeT0iMjY3IiB3aWR0aD0iNTY0IiBoZWlnaHQ9IjE5MCIgcng9IjMiIGZpbGw9IiMxNDI0M2IiIHN0cm9rZT0iIzMzNGU3MCIvPjx0ZXh0IHg9IjI3OCIgeT0iMjkyIiBmaWxsPSIjZjRmOGZmIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIj5TWVNURU0gQUNUSVZJVFk8L3RleHQ+PGcgc3Ryb2tlPSIjMzM0ZTcwIiBzdHJva2Utd2lkdGg9IjEiPjxwYXRoIGQ9Ik0yNzggMzE4SDgwMk0yNzggMzUySDgwMk0yNzggMzg2SDgwMk0yNzggNDIwSDgwMiIvPjxwYXRoIGQ9Ik0zMzAgMzA2VjQzOE00MTAgMzA2VjQzOE00OTAgMzA2VjQzOE01NzAgMzA2VjQzOE02NTAgMzA2VjQzOE03MzAgMzA2VjQzOCIvPjwvZz48cGF0aCBkPSJNMjgwIDQwNiAzNDIgMzg1IDM5OCA0MDAgNDYyIDM1MCA1MTggMzcxIDU4NCAzMzAgNjQ4IDM0NyA3MTIgMzEyIDgwMCAzMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdkYWFmMCIgc3Ryb2tlLXdpZHRoPSIzIi8+PGcgZmlsbD0iIzdkYWFmMCI+PHJlY3QgeD0iMzM4IiB5PSIzODEiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz48cmVjdCB4PSI0NTgiIHk9IjM0NiIgd2lkdGg9IjgiIGhlaWdodD0iOCIvPjxyZWN0IHg9IjU4MCIgeT0iMzI2IiB3aWR0aD0iOCIgaGVpZ2h0PSI4Ii8+PHJlY3QgeD0iNzA4IiB5PSIzMDgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiLz48L2c+PHJlY3QgeD0iMjU4IiB5PSI0NzUiIHdpZHRoPSI1NjQiIGhlaWdodD0iNjUiIHJ4PSIzIiBmaWxsPSIjMGMxNzI2IiBzdHJva2U9IiMzMzRlNzAiLz48dGV4dCB4PSIyNzgiIHk9IjUwMCIgZmlsbD0iIzdkYWFmMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCI+JCBucG0gcnVuIGJ1aWxkPC90ZXh0Pjx0ZXh0IHg9IjI3OCIgeT0iNTIxIiBmaWxsPSIjYzlkY2Y3IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIj7inJMgYnVpbGQgY29tcGxldGUg4oCUIHJlcGxhY2Ugd2l0aCB5b3VyIHByb2plY3Qgc2NyZWVuc2hvdDwvdGV4dD48L3N2Zz4K" alt="Dashboard interface placeholder for project one"><span class="project-arrow" aria-hidden="true">↗</span></a>
+            <div class="project-meta"><span>01 — [YEAR]</span><span>[WEB APP / YOUR ROLE]</span></div>
+            <h3>[Project name goes here]</h3><p>[A concise description of the challenge, your contribution, and what makes this project meaningful.]</p>
+            <div class="tag-row"><span>[Technology]</span><span>[Technology]</span><span>[Discipline]</span></div>
+          </article>
+          <article class="project project-offset reveal">
+            <a class="project-image" href="#contact" aria-label="Discuss project two"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NjAgNjgwIj48ZGVmcz48cGF0dGVybiBpZD0iZWRpdG9yLWdyaWQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTIyIDBIMFYyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjYzZDViIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSI3NjAiIGhlaWdodD0iNjgwIiBmaWxsPSIjMTAxYzJlIi8+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI2ODAiIGZpbGw9InVybCgjZWRpdG9yLWdyaWQpIi8+PHJlY3QgeD0iMzgiIHk9IjQyIiB3aWR0aD0iNjg0IiBoZWlnaHQ9IjU3MCIgcng9IjQiIGZpbGw9IiMwYzE3MjYiIHN0cm9rZT0iIzRlODBjYSIgc3Ryb2tlLW9wYWNpdHk9Ii43Ii8+PHJlY3QgeD0iMzgiIHk9IjQyIiB3aWR0aD0iNjg0IiBoZWlnaHQ9IjQwIiByeD0iNCIgZmlsbD0iIzFhMmE0MCIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjIiIHI9IjQiIGZpbGw9IiM3ZGFhZjAiLz48Y2lyY2xlIGN4PSI3NSIgY3k9IjYyIiByPSI0IiBmaWxsPSIjNjE3ODk1Ii8+PGNpcmNsZSBjeD0iOTAiIGN5PSI2MiIgcj0iNCIgZmlsbD0iIzYxNzg5NSIvPjx0ZXh0IHg9IjExMiIgeT0iNjYiIGZpbGw9IiNjMGNjZGYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPndvcmtzcGFjZSAvIGZpZWxkLW5vdGVzPC90ZXh0Pjx0ZXh0IHg9IjYzOCIgeT0iNjYiIGZpbGw9IiM5MWI5ZjQiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSI+REVWIE1PREU8L3RleHQ+PHJlY3QgeD0iMzgiIHk9IjgyIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjQ3OCIgZmlsbD0iIzE0MjQzYiIvPjx0ZXh0IHg9IjU2IiB5PSIxMTEiIGZpbGw9IiM5ZWFmYzYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSI+RVhQTE9SRVI8L3RleHQ+PHRleHQgeD0iNTYiIHk9IjE0NiIgZmlsbD0iIzdkYWFmMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCI+4pa+IHNyYzwvdGV4dD48dGV4dCB4PSI3MiIgeT0iMTc1IiBmaWxsPSIjYzlkY2Y3IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjkiPmFwcC50czwvdGV4dD48dGV4dCB4PSI3MiIgeT0iMjAzIiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjkiPnJvdXRlcy50czwvdGV4dD48dGV4dCB4PSI3MiIgeT0iMjMxIiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjkiPnN0eWxlcy5jc3M8L3RleHQ+PHRleHQgeD0iNTYiIHk9IjI3NiIgZmlsbD0iIzllYWZjNiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSI5Ij7ilrggdGVzdHM8L3RleHQ+PHRleHQgeD0iNTYiIHk9IjMxMCIgZmlsbD0iIzllYWZjNiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSI5Ij5wYWNrYWdlLmpzb248L3RleHQ+PHJlY3QgeD0iMTg4IiB5PSI4MiIgd2lkdGg9IjUzNCIgaGVpZ2h0PSIzMTYiIGZpbGw9IiMxMDFjMmUiLz48cmVjdCB4PSIxODgiIHk9IjgyIiB3aWR0aD0iNTM0IiBoZWlnaHQ9IjMyIiBmaWxsPSIjMTQyNDNiIi8+PHRleHQgeD0iMjEwIiB5PSIxMDMiIGZpbGw9IiNmNGY4ZmYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPmFwcC50czwvdGV4dD48ZyBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIj48ZyBmaWxsPSIjNjE3ODk1Ij48dGV4dCB4PSIyMTAiIHk9IjE0NiI+MDE8L3RleHQ+PHRleHQgeD0iMjEwIiB5PSIxNzgiPjAyPC90ZXh0Pjx0ZXh0IHg9IjIxMCIgeT0iMjEwIj4wMzwvdGV4dD48dGV4dCB4PSIyMTAiIHk9IjI0MiI+MDQ8L3RleHQ+PHRleHQgeD0iMjEwIiB5PSIyNzQiPjA1PC90ZXh0Pjx0ZXh0IHg9IjIxMCIgeT0iMzA2Ij4wNjwvdGV4dD48dGV4dCB4PSIyMTAiIHk9IjMzOCI+MDc8L3RleHQ+PHRleHQgeD0iMjEwIiB5PSIzNzAiPjA4PC90ZXh0PjwvZz48dGV4dCB4PSIyNDYiIHk9IjE0NiIgZmlsbD0iIzdkYWFmMCI+ZXhwb3J0PC90ZXh0Pjx0ZXh0IHg9IjI5NCIgeT0iMTQ2IiBmaWxsPSIjZjRmOGZmIj5hc3luYyBmdW5jdGlvbiBsb2FkUHJvamVjdCgpIHs8L3RleHQ+PHRleHQgeD0iMjYyIiB5PSIxNzgiIGZpbGw9IiNjOWRjZjciPmNvbnN0IHJlc3VsdCA9IGF3YWl0IGFwaS5nZXQoKTwvdGV4dD48dGV4dCB4PSIyNjIiIHk9IjIxMCIgZmlsbD0iI2Y0ZjhmZiI+aWYgKCFyZXN1bHQub2spIHs8L3RleHQ+PHRleHQgeD0iMjc4IiB5PSIyNDIiIGZpbGw9IiM3ZGFhZjAiPnJldHVybjwvdGV4dD48dGV4dCB4PSIzMTkiIHk9IjI0MiIgZmlsbD0iI2M5ZGNmNyI+aGFuZGxlRXJyb3IocmVzdWx0KTwvdGV4dD48dGV4dCB4PSIyNjIiIHk9IjI3NCIgZmlsbD0iI2Y0ZjhmZiI+fTwvdGV4dD48dGV4dCB4PSIyNjIiIHk9IjMwNiIgZmlsbD0iIzdkYWFmMCI+cmV0dXJuPC90ZXh0Pjx0ZXh0IHg9IjMxMCIgeT0iMzA2IiBmaWxsPSIjYzlkY2Y3Ij5yZXN1bHQuZGF0YTwvdGV4dD48dGV4dCB4PSIyNDYiIHk9IjMzOCIgZmlsbD0iI2Y0ZjhmZiI+fTwvdGV4dD48dGV4dCB4PSIyNDYiIHk9IjM3MCIgZmlsbD0iIzdkYWFmMCI+Ly8gdGVzdHMgKyBkb2N1bWVudGF0aW9uPC90ZXh0PjwvZz48cmVjdCB4PSIxODgiIHk9IjM5OCIgd2lkdGg9IjUzNCIgaGVpZ2h0PSIxNjIiIGZpbGw9IiMwZTFhMmIiIHN0cm9rZT0iIzI2M2Q1YiIvPjx0ZXh0IHg9IjIxMCIgeT0iNDI2IiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjkiPlRFUk1JTkFMIOKAlCBucG0gdGVzdDwvdGV4dD48dGV4dCB4PSIyMTAiIHk9IjQ1OCIgZmlsbD0iIzdkYWFmMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCI+JCBwbnBtIHRlc3Q8L3RleHQ+PHRleHQgeD0iMjEwIiB5PSI0ODQiIGZpbGw9IiNjOWRjZjciIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiPuKckyBhcGkuc3BlYy50czwvdGV4dD48dGV4dCB4PSIyMTAiIHk9IjUwOCIgZmlsbD0iI2M5ZGNmNyIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCI+4pyTIHByb2plY3QtZmxvdy5zcGVjLnRzPC90ZXh0Pjx0ZXh0IHg9IjIxMCIgeT0iNTM4IiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjkiPlJlcGxhY2UgdGhpcyBtb2NrdXAgd2l0aCB5b3VyIG93biBwcm9qZWN0IHNjcmVlbnNob3QuPC90ZXh0PjxyZWN0IHg9IjM4IiB5PSI1NjAiIHdpZHRoPSI2ODQiIGhlaWdodD0iNTIiIGZpbGw9IiMxNDI0M2IiLz48dGV4dCB4PSI1OCIgeT0iNTkwIiBmaWxsPSIjOWVhZmM2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIj5QUk9KRUNUIFBSRVZJRVcgLyBSRVBMQUNFIFdJVEggWU9VUiBXT1JLPC90ZXh0Pjwvc3ZnPgo=" alt="Code editor interface placeholder for project two"><span class="project-arrow" aria-hidden="true">↗</span></a>
+            <div class="project-meta"><span>02 — [YEAR]</span><span>[OPEN SOURCE / YOUR ROLE]</span></div>
+            <h3>[Another project name]</h3><p>[Describe the people this was for and the part you played in bringing it to life.]</p>
+            <div class="tag-row"><span>[Technology]</span><span>[Technology]</span><span>[Discipline]</span></div>
+          </article>
+        </div>
+        <div class="work-note"><span class="note-prompt" aria-hidden="true">//</span><p>More projects, code, and experiments.</p><a href="#contact">Ask me about a build <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="experience section-wrap section-pad" id="experience">
+      <div class="section-label reveal"><span>03 / The long game</span><span class="label-rule"></span><span>LEARNING & WORK</span></div>
+      <div class="experience-grid">
+        <div class="experience-title reveal"><h2 class="display-heading">A practice<br>in <em>progress.</em></h2><p>There’s always another good thing to learn.</p></div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><div class="timeline-date">[20XX — NOW]</div><div class="timeline-content"><span class="timeline-type">WORKPLACE / CURRENT</span><h3>[Your workplace name]</h3><p>[Your role] · [City, Region]</p><p class="timeline-description">[Add a sentence about your work, your team, or what you’re learning. Include details you’re comfortable sharing.]</p><a class="underlined-link" href="[WORKPLACE_URL]" target="_blank" rel="noreferrer">Visit workplace <span aria-hidden="true">↗</span></a></div><div class="timeline-image"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RiZTlmZiIvPjxwYXRoIGQ9Ik0wIDI0MCAzMjAgOTV2MjI1SDBaIiBmaWxsPSIjMTczYTY4Ii8+PHJlY3QgeD0iNDYiIHk9IjYyIiB3aWR0aD0iMTczIiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2YzZjZmYyIvPjxwYXRoIGQ9Im00NiA4MyA4NiA2NSA4Ny02NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGU4MGNhIiBzdHJva2Utd2lkdGg9IjEwIi8+PGNpcmNsZSBjeD0iMjQ3IiBjeT0iMjE5IiByPSIzNyIgZmlsbD0iIzRlODBjYSIvPjx0ZXh0IHg9IjI0NiIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjE4IiBmaWxsPSIjZjNmNmZjIj5XPC90ZXh0Pjx0ZXh0IHg9IjIyIiB5PSIyOTIiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNmM2Y2ZmMiPldPUktQTEFDRSBJTUFHRTwvdGV4dD48L3N2Zz4K" alt="Replace with a workplace or team image"></div></article>
+          <article class="timeline-item reveal"><div class="timeline-date">[20XX — 20XX]</div><div class="timeline-content"><span class="timeline-type">EDUCATION / QUALIFICATION</span><h3>[Course, degree, or qualification]</h3><p>[School or institution] · [Location]</p><p class="timeline-description">[Share what you studied or a skill you developed. Add another item by duplicating this timeline row.]</p></div><div class="timeline-image"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iIzRlODBjYSIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjE0OCIgcj0iOTgiIGZpbGw9IiNmM2Y2ZmMiLz48cGF0aCBkPSJtNzAgMTE4IDkwLTQ3IDkwIDQ3LTkwIDQ4WiIgZmlsbD0iIzE3M2E2OCIvPjxwYXRoIGQ9Ik0xMDUgMTM1djU2YzMzIDI1IDc4IDI1IDExMCAwdi01NmwtNTUgMjlaIiBmaWxsPSIjZGJlOWZmIi8+PHBhdGggZD0iTTI0NyAxMjB2NjUiIHN0cm9rZT0iIzE3M2E2OCIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGNpcmNsZSBjeD0iMjQ3IiBjeT0iMTk1IiByPSI4IiBmaWxsPSIjMTczYTY4Ii8+PHRleHQgeD0iMTYwIiB5PSIyODkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNmM2Y2ZmMiPlFVQUxJRklDQVRJT04gSU1BR0U8L3RleHQ+PC9zdmc+Cg==" alt="Replace with a qualification, certificate, or campus image"></div></article>
+           <article class="timeline-item reveal"><div class="timeline-date">[20XX]</div><div class="timeline-content"><span class="timeline-type">CERTIFICATION / QUALIFICATION</span><h3>[Another qualification or certificate]</h3><p>[Awarding institution] · [Location]</p><p class="timeline-description">[Add a brief note about this qualification, a specialization, or what you learned.]</p></div><div class="timeline-image"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIj4KICA8cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2RiZTlmZiIvPgogIDxyZWN0IHg9IjY0IiB5PSI1NCIgd2lkdGg9IjE5MiIgaGVpZ2h0PSIyMTIiIGZpbGw9IiNmM2Y2ZmMiLz4KICA8cGF0aCBkPSJNOTIgOTVoMTM2TTkyIDEyMmgxMDhNOTIgMTQ5aDEyMCIgc3Ryb2tlPSIjMTczYTY4IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjE2MCIgY3k9IjIwNSIgcj0iMjYiIGZpbGw9IiM0ZTgwY2EiLz4KICA8cGF0aCBkPSJtMTQ4IDIwNSA5IDkgMTctMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YzZjZmYyIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjI4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzE4MjYzZCI+Q0VSVElGSUNBVEUgSU1BR0U8L3RleHQ+Cjwvc3ZnPgo=" alt="Illustrated placeholder for another qualification certificate"></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="outside">
+      <div class="outside-inner section-wrap">
+        <div class="outside-art reveal"><div class="outside-lines"></div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MDAgNjIwIj48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjYyMCIgZmlsbD0iIzE3M2E2OCIvPjxjaXJjbGUgY3g9IjUwMCIgY3k9IjE0MCIgcj0iOTUiIGZpbGw9IiNkYmU5ZmYiLz48cGF0aCBkPSJNMCAzNjFjMTMyLTk3IDI0NS04OCAzNTMtNSAxMjkgOTkgMjAxIDY5IDM0Ny0xNnYyODBIMFoiIGZpbGw9IiM0ZTgwY2EiLz48cGF0aCBkPSJNMCA0NDhjMTIwLTU5IDIzOS00OCAzNzAgMTUgMTEyIDU1IDIxNiA0MiAzMzAtMTB2MTY3SDBaIiBmaWxsPSIjMTAyOTRiIi8+PHBhdGggZD0iTTk3IDI5NWM3MC0xMjQgMTQzLTEzOSAyMDktNTEgNTIgNzAgNTggMTcyIDggMjEyLTc1IDU5LTE3OS0yLTIxNy0xNjFaIiBmaWxsPSIjZjNmNmZjIi8+PHBhdGggZD0iTTE0MCAzMzRjNzItMjMgMTE1LTE0IDE2MSAxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGU4MGNhIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTkwIDI2NmMyIDY1LTE4IDEwMy00OCAxMzNtMTQzLTE0NWMtMzQgNTgtMzcgMTAwLTIwIDE0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTczYTY4IiBzdHJva2Utd2lkdGg9IjciLz48dGV4dCB4PSIzNiIgeT0iNTgyIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZjNmNmZjIiBsZXR0ZXItc3BhY2luZz0iMiI+QSBMSVRUTEUgUEVSU09OQUxJVFkgLyBZT1VSIFBIT1RPPC90ZXh0Pjwvc3ZnPgo=" alt="Replace with a personal photo that hints at your hobbies"><span class="outside-label">PERSONAL LOG / 04</span></div>
+         <div class="outside-copy reveal"><span class="mini-kicker">04 / OUTSIDE THE EDITOR</span><h2>There’s more<br>to me than <em>tabs.</em></h2><p>[Tell people what you love doing away from work. A hobby, a ritual, a place you return to — something that feels like you.]</p><ul class="hobby-list" aria-label="Hobbies"><li>[Hobby one]</li><li>[Hobby two]</li><li>[Hobby three]</li></ul><p class="outside-aside">Lately: [a book, a trail, a tiny obsession]</p><a class="underlined-link" href="#contact">Trade recommendations? <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="contact section-wrap" id="contact">
+      <div class="section-label section-label-light reveal"><span>05 / The next hello</span><span class="label-rule"></span><span>CONTACT</span></div>
+      <div class="contact-main reveal"><div><span class="mini-kicker">CONTACT / COLLABORATION / QUESTIONS</span><h2>Have a build<br>in mind? <em>Let’s talk.</em></h2></div><a class="contact-button" href="mailto:hello@example.com" aria-label="Email Your Name">Say hello <span aria-hidden="true">↗</span></a></div>
+      <div class="contact-bottom"><p>For project questions, collaboration, or a technical conversation.<br><a href="mailto:hello@example.com">hello@example.com</a> <span class="edit-hint">[Replace with your email]</span></p><div class="social-links" aria-label="Social media links">
+        <a href="[GITHUB_URL]" target="_blank" rel="noreferrer" aria-label="GitHub (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.2-1.5 6.2-7A5.5 5.5 0 0 0 18.8 4 5.1 5.1 0 0 0 18.7 0S17.5-.4 15 1.5a13.5 13.5 0 0 0-7 0C5.5-.4 4.3 0 4.3 0A5.1 5.1 0 0 0 4.2 4a5.5 5.5 0 0 0-1.5 3.9c0 5.5 3.2 6.7 6.2 7A3.4 3.4 0 0 0 8 17.6V22"/></svg><span>GitHub</span><b>↗</b></a>
+        <a href="[LINKEDIN_URL]" target="_blank" rel="noreferrer" aria-label="LinkedIn (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span><b>↗</b></a>
+        <a href="[SOCIAL_URL]" target="_blank" rel="noreferrer" aria-label="Social profile (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="dot-fill" cx="18" cy="6" r="1"/></svg><span>[Social]</span><b>↗</b></a>
+      </div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark">YN</span><span>Your Name<span class="wordmark-dot">.</span></span></a><span>Made with care, by <span class="replace">[Your name]</span>.</span><a href="#top" class="back-top">Back to the top ↑</a><span class="footer-year">© <span id="year">2025</span></span></footer>
+</body>
+</html>

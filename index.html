@@ -1,767 +1,173 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <title>S.Govender</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6fc">
+  <meta name="description" content="A personal portfolio template for an independent software developer.">
+  <meta property="og:title" content="Developer Portfolio — Personal Site">
+  <meta property="og:description" content="An independent developer's corner of the internet.">
+  <meta property="og:type" content="website">
+  <title>Developer Portfolio — Personal Site</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('developer-portfolio-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme =
+        savedTheme === 'dark' || savedTheme === 'light'
+          ? savedTheme
+          : systemPrefersDark
+            ? 'dark'
+            : 'light';
+    } catch {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+  <link rel="icon" href="./images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Your Name, home"><span class="wordmark-mark">YN</span><span>Your Name<span class="wordmark-dot">.</span></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Background</a><a href="#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.6 8.6 0 1 0 20.2 15.3Z"></path></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </header>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-  
-
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
+  <main id="main">
+    <section class="hero section-wrap" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Software developer <span class="eyebrow-divider">//</span> <span class="replace">[Your city]</span></p>
+        <h1 id="hero-title">I write code,<br>solve problems,<br><em>ship software.</em></h1>
+        <p class="hero-intro">Hello, I’m <strong>[Your name]</strong> — a software developer working with [your languages, tools, or areas of focus]. I care about readable code and useful outcomes.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#work">View selected builds <span aria-hidden="true">↓</span></a><a class="text-link" href="#contact">Contact me <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-footnote"><span>BUILDING NOW: [PROJECT OR TECHNOLOGY]</span><span class="tiny-line"></span><span>STACK: [LANGUAGE / FRAMEWORK]</span></div>
       </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-   
-    
-    <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
-
-      <div class="container">
-        <div class="row align-items-center">
-          
-          <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="h2 mb-0">SuhailG<span class="text-primary">.</span> </a></h1>
-          </div>
-
-          <div class="col-12 col-md-10 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="#home-section" class="nav-link">Home</a></li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link">About Me</a>
-                  <ul class="dropdown">
-                    <li><a href="#next" class="nav-link">Work</a></li>
-                    <li><a href="#gallery-section" class="nav-link">Qualifications</a></li>
-                    <li><a href="#hobby" class="nav-link">Hobbies</a></li>
-                    <li><a href="#services-section" class="nav-link">Strengths</a></li>
-
-                    
-                    
-                  </ul>
-                </li>
-                
-                
-                <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                <li class="social"><a href="https://www.facebook.com/suhail.govender" target="_blank" rel="noopener noreferrer"><span class="icon-facebook"></span></a></li>
-                <li class="social"><a href="https://www.instagram.com/_suhail_g" target="_blank" rel="noopener noreferrer"><span class="icon-instagram"></span></a></li>
-                <li class="social"><a href="https://www.linkedin.com/in/suhail-govender-2aa8752a6?trk=contact-info" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin"></span></a></li>
-                
-              </ul>
-            </nav>
-          </div>
-
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
-
+      <div class="hero-art reveal" aria-label="Portrait placeholder artwork">
+        <div class="hero-code-panel" aria-hidden="true">
+          <div class="code-panel-head"><span class="code-path">~/portfolio / profile.ts</span><span class="code-mark">TS</span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-variable">work</span> = {
+  goal: <span class="code-string">"solve real problems"</span>,
+  status: <span class="code-string">"in progress"</span>
+};</code></pre>
+          <div class="code-panel-foot"><span>BUILD</span><span>TEST</span><span>ITERATE</span></div>
         </div>
+        <div class="portrait-frame"><img src="./images/portrait-placeholder.svg" alt="Replace with a portrait of yourself"></div>
+        <div class="image-caption"><span class="caption-index">01</span><span>PROFILE PHOTO<br><small>[Replace with your image]</small></span></div>
       </div>
-      
-    </header>
-
-  
-     
-    <div class="site-blocks-cover overlay" style="background-image: url(images/iStock-1201405775.jpg);" data-aos="fade" id="home-section">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-
-          
-          <div class="col-md-10 mt-lg-5 text-center">
-            <div class="single-text owl-carousel">
-              <div class="slide">
-                <h1 class="text-uppercase" data-aos="fade-up">Software Developer</h1>
-                <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Design and build software applications, ensuring functionality, user experience, and performance meet the highest standards for client needs.</p>
-                <div data-aos="fade-up" data-aos-delay="100">
-
-                </div>
-              </div>
-          
-              <div class="slide">
-                <h1 class="text-uppercase" data-aos="fade-up">AWS Cloud Engineer</h1>
-                <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Specialize in designing, deploying, and maintaining cloud-based infrastructure on AWS, ensuring scalability, security, and efficiency for business operations.</p>
-                <div data-aos="fade-up" data-aos-delay="100">
-
-                </div>
-              </div>
-          
-              <div class="slide">
-                <h1 class="text-uppercase" data-aos="fade-up">Technical Support</h1>
-                <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Provide expert troubleshooting and support to ensure clients’ systems and software are running smoothly, resolving issues efficiently and effectively.</p>
-                <div data-aos="fade-up" data-aos-delay="100">
-                </div>
-              </div>
-            </div>
-          </div>
-          
-
-            </div>
-          </div>
-            
-        </div>
-      </div>
-
-      <a href="#next" class="mouse smoothscroll">
-        <span class="mouse-icon">
-          <span class="mouse-wheel"></span>
-        </span>
-      </a>
-    </div>  
-
-
-    <div class="site-section cta-big-image" id="about-section">
-      <div class="container">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-8 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">About Me</h2>
-            <p class="lead" data-aos="fade-up" data-aos-delay="100">Suhail Govender (Software developer)</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-            <figure class="circle-bg">
-            <img src="images/1703615533383.jpeg" alt="Free Website Template by Free-Template.co" class="img-fluid">
-            </figure>
-          </div>
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            
-            <h3 class="text-black mb-4"></h3>
-
-            <p>I am deeply passionate about software development, and my dedication drives me to relentlessly pursue innovative solutions. I thrive on the challenge of problem-solving, constantly learning and adapting to new technologies to find the most efficient and effective solutions. Whether it's building complex systems, optimizing performance, or addressing customer needs, I am committed to delivering high-quality, reliable software. My approach is methodical yet creative, ensuring that every project I take on is executed with precision and care, and I never stop until the problem is fully solved.</p>
-
-           
-            
-          </div>
-
-        </div>    
-        
-      </div>  
-    </div>
-
-    <div class="site-section" id="next">
-      <div class="container">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-8 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Work</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-            <figure class="circle-bg">
-            <img src="images/1*_6_6XYmJnlLKV4AKBxy4NQ.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
-            </figure>
-          </div>
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            <div class="mb-4">
-              <h3 class="h3 mb-4 text-black">Showcasing Select Banking Solutions</h3>
-<p>This is just a glimpse of my work, with a strong focus on delivering impactful banking applications that drive results.</p>
-
-              
-            </div>
-              
-            <div class="mb-4">
-              <ul class="list-unstyled ul-check success">
-                <li>Robust banking application development</li>
-                <li>Seamless financial integrations</li>
-                <li>Secure transaction processing</li>
-                
-              </ul>
-              
-            </div>         
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-5">
-      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="">
-        <img src="images/177746c9-527b-4d73-9908-4c507f5184a9.png" alt="KYC" class="img-fluid w-25 mb-4">
-        <h3 class="card-title">KYC</h3>
-        <p>Streamlined KYC solutions that enhance identity verification and ensure compliance with regulatory standards.</p>
-      </div>
-      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="images/pngtree-online-e-banking-app-wallet-banking-png-image_6036422.png" alt="Banking Application UI" class="img-fluid w-25 mb-4">
-        <h3 class="card-title">Banking Application UI</h3>
-        <p>Modern and intuitive UI designs crafted for seamless user experiences in banking applications.</p>
-      </div>
-      <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
-        <img src="images/Layer_1.png" alt="Banking General Ledger" class="img-fluid w-25 mb-4">
-        <h3 class="card-title">Banking Application General Ledger</h3>
-        <p>Accurate and reliable ledger management systems designed to streamline financial operations.</p>
-      </div>
-    </div>
-    
-
-    <section class="site-section" id="gallery-section" data-aos="fade">
-      
-
-      <div class="container">
-
-        <div class="row mb-3">
-          <div class="col-12 text-center">
-            <h2 class="section-title mb-3">Qualifications</h2>
-          </div>
-        </div>
-
-        
-        
-        <div id="posts" class="row no-gutter">
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-
-            <a href="images/AWS_Certified_Developer_Associate_certificate_page-0001.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/AWS_Certified_Developer_Associate_certificate_page-0001.jpg">
-            </a>
-
-          </div>
-                    <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-
-            <a href="images/AWS_Certified_Cloud_Practitioner_certificate_page-0001.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/AWS_Certified_Cloud_Practitioner_certificate_page-0001.jpg">
-            </a>
-
-          </div>
-          
-          <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/CertifiedBlockchainExpert.jpg" class="item-wrap fancybox">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/CertifiedBlockchainExpert.jpg">
-            </a>
-          </div>
-          <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/CertifiedCryptocurrencyExpert.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/CertifiedCryptocurrencyExpert.jpg">
-            </a>
-          </div>
-
-          <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/CertifiedMetaverseExpert.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/CertifiedMetaverseExpert.jpg">
-            </a>
-          </div>
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-
-            <a href="images/CertifiedNFTExpert.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/CertifiedNFTExpert.jpg">
-            </a>
-
-          </div>
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-
-            <a href="images/Masthead.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/Masthead.png">
-            </a>
-
-          </div>
-
-
-          <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/ibm1.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/ibm1.png">
-            </a>
-          </div>
-
-          <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/ibm2.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/ibm2.png">
-            </a>
-          </div>
-
-          <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/ibm3.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/ibm3.png">
-            </a>
-          </div>
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/ibm4.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/ibm4.png">
-            </a>
-          </div>
-
-          <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/ibm5.png" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/ibm5.png">
-            </a>
-          </div>
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/Cyber.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/Cyber.jpeg">
-            </a>
-          </div>
-
-          <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/Iot.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/Iot.jpeg">
-            </a>
-          </div>
-
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/MyPic.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/MyPic.jpg">
-            </a>
-          </div>
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/APPDEV.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/APPDEV.jpeg">
-            </a>
-          </div>
-          <div class="item design col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
-            <a href="images/HighDistinction.jpeg" class="item-wrap fancybox" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/HighDistinction.jpeg">
-            </a>
-          </div>
-
-          
-        </div>
-      </div>
-
+      <div class="hero-side-note" aria-hidden="true">CODE · TEST · SHIP · LEARN</div>
     </section>
 
+    <div class="stack-strip section-wrap" aria-label="Technology stack placeholders">
+      <span class="stack-prefix">// STACK</span>
+      <span class="stack-item">[LANGUAGE]</span><span class="stack-item">[FRAMEWORK]</span><span class="stack-item">[DATABASE]</span><span class="stack-item">[TOOLS]</span>
+      <span class="stack-note">Replace with your toolkit</span>
+    </div>
 
-    <section class="site-section" id="hobby">
-      <div class="container">
-    
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-7 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Hobbies</h2>
-            <p class="lead" data-aos="fade-up" data-aos-delay="100">Beyond the code, these are the activities that fuel my creativity and keep me inspired.</p>
-          </div>
+    <section class="about section-wrap section-pad" id="about">
+      <div class="section-label reveal"><span>01 / A little about me</span><span class="label-rule"></span><span>THE PERSON, NOT THE CV</span></div>
+      <div class="about-grid">
+        <h2 class="display-heading reveal">How I approach<br>a <em>problem.</em></h2>
+        <div class="about-body reveal">
+          <p class="lead">Understand the problem. Then choose the <em>right tools.</em></p>
+          <p>[Write a short, personal introduction here. Share what drew you to software, how you like to work, and the kind of problems you enjoy solving. Keep it in your own voice.]</p>
+          <p>I work in small, reviewable steps: understand the constraints, build a useful first version, test it, then improve it.</p>
+          <a class="underlined-link" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
         </div>
-        
-        <div class="row align-items-lg-center">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-            <div class="owl-carousel slide-one-item-alt">
-              <img src="images/pngtree-top-view-soccer-stadium-with-fans-on-transparent-background-png-image_15849373.png" alt="Soccer" class="img-fluid">
-              <img src="images/pngtree-gym-gymnasium-body-building-exercise-training-fitness-workout-png-image_7579834.png" alt="Exercise" class="img-fluid">
-              <img src="images/White-Volkswagen-Car-No-Background.png" alt="Cars" class="img-fluid">
-              <img src="images/cartoon-fishing-image-png-22.png" alt="Fishing" class="img-fluid">
-            </div>
-            <div class="custom-direction">
-              <a href="#" class="custom-prev"><span><span class="icon-keyboard_backspace"></span></span></a>
-              <a href="#" class="custom-next"><span><span class="icon-keyboard_backspace"></span></span></a>
-            </div>
-          </div>
-    
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            <div class="owl-carousel slide-one-item-alt-text">
-              <div>
-                <h2 class="section-title mb-3">01. Soccer</h2>
-                <p>Whether it's playing or watching, soccer keeps me active and sharp, teaching discipline and teamwork along the way.</p>
-              </div>
-              <div>
-                <h2 class="section-title mb-3">02. Exercise</h2>
-                <p>Staying fit is essential for maintaining focus and energy, whether it’s lifting weights or hitting the gym.</p>
-              </div>
-              <div>
-                <h2 class="section-title mb-3">03. Cars</h2>
-                <p>From classic models to the latest innovations, cars are a passion that fuels my love for design and engineering.</p>
-              </div>
-              <div>
-                <h2 class="section-title mb-3">04. Fishing</h2>
-                <p>Fishing is my escape, where I can unwind, connect with nature, and enjoy some quiet reflection.</p>
-              </div>
-            </div>
+      </div>
+      <div class="strengths">
+        <div class="strengths-intro reveal"><span class="mini-kicker">HOW I WORK</span><h3>Good habits<br>make good software.</h3></div>
+        <div class="strength-list" data-paged-list>
+          <article class="strength reveal" data-paged-item><span class="strength-no">01</span><div><h4>Readable, maintainable code</h4><p>[Add how you keep your work clear and reliable.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item><span class="strength-no">02</span><div><h4>Practical problem solving</h4><p>[Describe how you break complex problems into useful steps.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item><span class="strength-no">03</span><div><h4>Clear technical communication</h4><p>[Share how you work with teammates and explain decisions.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">04</span><div><h4>Testing and reliability</h4><p>[Share how you check your work and reduce regressions.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">05</span><div><h4>Thoughtful technical decisions</h4><p>[Describe how you compare options and make trade-offs.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">06</span><div><h4>Continuous learning</h4><p>[Describe how you build skills and learn from challenges.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">07</span><div><h4>Collaborative delivery</h4><p>[Share how you coordinate work and incorporate feedback.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">08</span><div><h4>Attention to detail</h4><p>[Describe how you improve usability and catch edge cases.]</p></div><span class="strength-mark">↗</span></article>
+          <article class="strength reveal" data-paged-item hidden><span class="strength-no">09</span><div><h4>Steady iteration</h4><p>[Share how you ship in small steps and improve over time.]</p></div><span class="strength-mark">↗</span></article>
+          <div class="pager-controls" data-paged-controls role="group" aria-label="How I work pages">
+            <span class="pager-count" data-paged-count aria-live="polite" aria-label="Page 1 of 3">01 / 03</span>
+            <button class="pager-arrow" data-paged-previous type="button" aria-label="Previous page" disabled>←</button>
+            <button class="pager-arrow" data-paged-next type="button" aria-label="Next page">→</button>
           </div>
         </div>
       </div>
     </section>
-    
 
-    
-    
-
-    <section class="site-section border-bottom bg-light" id="services-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-12 text-center" data-aos="fade">
-            <h2 class="section-title mb-3">Strengths</h2>
-          </div>
+    <section class="work section-pad" id="work">
+      <div class="section-wrap">
+        <div class="section-label section-label-light reveal"><span>02 / Selected work</span><span class="label-rule"></span><span>A FEW THINGS I’VE MADE</span></div>
+        <div class="work-heading reveal"><h2 class="display-heading">Selected<br><em>builds.</em></h2><p>Projects, experiments, and tools.<br><span>[Replace these placeholders with your own work.]</span></p></div>
+        <div class="project-grid">
+          <article class="project project-feature reveal">
+            <a class="project-image" href="#contact" aria-label="Discuss project one"><img src="./images/project-atlas.svg" alt="Dashboard interface placeholder for project one"><span class="project-arrow" aria-hidden="true">↗</span></a>
+            <div class="project-meta"><span>01 — [YEAR]</span><span>[WEB APP / YOUR ROLE]</span></div>
+            <h3>[Project name goes here]</h3><p>[A concise description of the challenge, your contribution, and what makes this project meaningful.]</p>
+            <div class="tag-row"><span>[Technology]</span><span>[Technology]</span><span>[Discipline]</span></div>
+          </article>
+          <article class="project project-offset reveal">
+            <a class="project-image" href="#contact" aria-label="Discuss project two"><img src="./images/project-fieldnotes.svg" alt="Code editor interface placeholder for project two"><span class="project-arrow" aria-hidden="true">↗</span></a>
+            <div class="project-meta"><span>02 — [YEAR]</span><span>[OPEN SOURCE / YOUR ROLE]</span></div>
+            <h3>[Another project name]</h3><p>[Describe the people this was for and the part you played in bringing it to life.]</p>
+            <div class="tag-row"><span>[Technology]</span><span>[Technology]</span><span>[Discipline]</span></div>
+          </article>
         </div>
-    
-        <div class="row align-items-stretch">
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/opentext-aws-logo-cover-416x274.png.avif" alt="AWS" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Amazon Web Services</h3>
-                <p>Building secure, scalable, and efficient cloud-based solutions leveraging AWS infrastructure and services.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/Android-vs-iOS-App.webp" alt="App Development" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Application Development</h3>
-                <p>Crafting intuitive, high-performance applications for web and mobile platforms tailored to business needs.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/React.webp" alt="React.js" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>React.js</h3>
-                <p>Developing dynamic, component-based user interfaces with React.js for seamless user experiences.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/node-js-icon-909x1024-ig4gm9k7.png" alt="Node.js" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Node.js</h3>
-                <p>Building robust backend systems using Node.js for high-performance and real-time data processing.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/Kotlin_Icon.png" alt="Kotlin" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Kotlin</h3>
-                <p>Creating mobile applications with Kotlin, ensuring a consistent user experience.</p>
-              </div>
-            </div>
-          </div>
-
-                    <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/cordova_bot.png" alt="Cordova" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Cordova</h3>
-                <p>Creating cross-platform mobile applications with Cordova, ensuring a consistent user experience.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/GitHub_Invertocat_Logo.svg.png" alt="GitHub" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>GitHub</h3>
-                <p>Version control, code collaboration, and project management using GitHub for effective development workflows.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/AngularJS-512.webp" alt="Angular" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Angular</h3>
-                <p>Building scalable web applications using Angular for modular architecture and reusable components.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/Python-logo-notext.svg.png" alt="Python" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Python</h3>
-                <p>Implementing data processing, automation, and backend development using Python for rapid prototyping.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/Groovy-logo.svg.png" alt="Groovy" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Groovy</h3>
-                <p>Leveraging Groovy for efficient data processing, workflow automation, and backend development, enabling rapid prototyping and seamless integration with other technologies.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/sql-database-icon-logo-design-ui-or-ux-app-png.png" alt="SQL" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>SQL</h3>
-                <p>Utilizing SQL for efficient database management, data retrieval, and complex querying to ensure seamless integration and optimization of backend systems for enhanced performance.</p>
-              </div>
-            </div>
-          </div>
-          
-          
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/ai-generated-series-of-camera-cctv-isolated-on-transparent-background-free-png.png" alt="CCTV" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>CCTV Systems</h3>
-                <p>Implementing CCTV systems to enhance security, monitor activities, and ensure safety across various environments.</p>
-
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/electrician-working-cut-out-3a0e69.png" alt="Electricity" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Electrical Systems</h3>
-                <p>Designing and implementing electrical systems for residential and commercial projects, ensuring reliability and safety.</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/pngtree-transparent-fire-detector-vector-png-image_6636082.png" alt="Fire Detection" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Fire Detection Systems</h3>
-                <p>Implementing fire detection systems to ensure prompt response and safety in case of emergencies.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="unit-4">
-              <div class="unit-4-icon">
-                <img src="images/7426463.png" alt="Access Control" class="img-fluid w-25 mb-4">
-              </div>
-              <div>
-                <h3>Access Control</h3>
-                <p>Enhance security and monitor entry points effectively with robust access control systems.</p>
-              </div>
-            </div>
-          </div>
-          
-    
-        </div>
-      </div>
-    </section>
-    
-
-    <section class="site-section" id="about-section">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
-            <figure class="circle-bg">
-            <img src="images/property-10164301-13497134_dhd.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
-            </figure>
-          </div>
-          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
-            
-
-            <div class="row">
-
-              
-              
-
-              <div class="col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="unit-4 d-flex">
-                  <div>
-                    <h3>
-                      <img src="/images/Apzor_pastel-green.png" alt="Apzor Logo" style="width: 150px; height: auto;">
-                    </h3>                    
-                    <p>Banking. Identity. Crypto. Reimagined.</p>
-
-                     <p> APZOR delivers a powerful, secure fintech stack for the real-world economy designed for emerging markets, built for scale</p>
-                     <p class="mb-0"><a href="https://apzor.com" target="_blank" rel="noopener noreferrer">Learn More</a></p>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            
-          </div>
-        </div>
-
-        
+        <div class="work-note"><span class="note-prompt" aria-hidden="true">//</span><p>More projects, code, and experiments.</p><a href="#contact">Ask me about a build <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
-   
-
-
-    <section class="site-section bg-light" id="contact-section" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-12 text-center">
-            <h2 class="section-title mb-3">Contact Me</h2>
+    <section class="experience section-wrap section-pad" id="experience">
+      <div class="section-label reveal"><span>03 / The long game</span><span class="label-rule"></span><span>LEARNING & WORK</span></div>
+      <div class="experience-grid">
+        <div class="experience-title reveal"><h2 class="display-heading">A practice<br>in <em>progress.</em></h2><p>There’s always another good thing to learn.</p></div>
+        <div class="timeline" data-paged-list>
+          <article class="timeline-item reveal" data-paged-item><div class="timeline-date">[20XX — NOW]</div><div class="timeline-content"><span class="timeline-type">WORKPLACE / CURRENT</span><h3>[Your workplace name]</h3><p>[Your role] · [City, Region]</p><p class="timeline-description">[Add a sentence about your work, your team, or what you’re learning. Include details you’re comfortable sharing.]</p><a class="underlined-link" href="[WORKPLACE_URL]" target="_blank" rel="noreferrer">Visit workplace <span aria-hidden="true">↗</span></a></div><div class="timeline-image"><img src="./images/qualification-work.svg" alt="Replace with a workplace or team image"></div></article>
+          <article class="timeline-item reveal" data-paged-item><div class="timeline-date">[20XX — 20XX]</div><div class="timeline-content"><span class="timeline-type">EDUCATION / QUALIFICATION</span><h3>[Course, degree, or qualification]</h3><p>[School or institution] · [Location]</p><p class="timeline-description">[Share what you studied or a skill you developed.]</p></div><div class="timeline-image"><img src="./images/qualification-study.svg" alt="Replace with a qualification, certificate, or campus image"></div></article>
+          <article class="timeline-item reveal" data-paged-item><div class="timeline-date">[20XX]</div><div class="timeline-content"><span class="timeline-type">CERTIFICATION / QUALIFICATION</span><h3>[Another qualification or certificate]</h3><p>[Awarding institution] · [Location]</p><p class="timeline-description">[Add a brief note about this qualification, a specialization, or what you learned.]</p></div><div class="timeline-image"><img src="./images/qualification-extra.svg" alt="Illustrated placeholder for another qualification certificate"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX — 20XX]</div><div class="timeline-content"><span class="timeline-type">PROJECT / EXPERIENCE</span><h3>[Project, role, or contribution]</h3><p>[Team or organization] · [Location]</p><p class="timeline-description">[Describe the work, your role, or what you learned.]</p></div><div class="timeline-image"><img src="./images/project-fieldnotes.svg" alt="Replace with a project or team image"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX]</div><div class="timeline-content"><span class="timeline-type">EDUCATION / LEARNING</span><h3>[Course or learning program]</h3><p>[School or platform] · [Location]</p><p class="timeline-description">[Describe a subject or skill you developed.]</p></div><div class="timeline-image"><img src="./images/qualification-study.svg" alt="Replace with an education or course image"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX — 20XX]</div><div class="timeline-content"><span class="timeline-type">WORKPLACE / PREVIOUS</span><h3>[Previous workplace name]</h3><p>[Your role] · [City, Region]</p><p class="timeline-description">[Describe your responsibilities or a contribution.]</p></div><div class="timeline-image"><img src="./images/qualification-work.svg" alt="Replace with a workplace or team image"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX]</div><div class="timeline-content"><span class="timeline-type">CERTIFICATION / QUALIFICATION</span><h3>[Certification or specialization]</h3><p>[Awarding institution] · [Location]</p><p class="timeline-description">[Add a brief note about what you learned.]</p></div><div class="timeline-image"><img src="./images/qualification-extra.svg" alt="Replace with a certification or qualification image"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX — 20XX]</div><div class="timeline-content"><span class="timeline-type">PROJECT / EXPERIENCE</span><h3>[Another project or contribution]</h3><p>[Team or organization] · [Location]</p><p class="timeline-description">[Describe the project and your part in it.]</p></div><div class="timeline-image"><img src="./images/project-fieldnotes.svg" alt="Replace with a project or team image"></div></article>
+          <article class="timeline-item reveal" data-paged-item hidden><div class="timeline-date">[20XX]</div><div class="timeline-content"><span class="timeline-type">LEARNING / DEVELOPMENT</span><h3>[Workshop, course, or community]</h3><p>[Organization] · [Location]</p><p class="timeline-description">[Share a skill or insight from this experience.]</p></div><div class="timeline-image"><img src="./images/qualification-study.svg" alt="Replace with a learning or development image"></div></article>
+          <div class="pager-controls" data-paged-controls role="group" aria-label="Learning and work pages">
+            <span class="pager-count" data-paged-count aria-live="polite" aria-label="Page 1 of 3">01 / 03</span>
+            <button class="pager-arrow" data-paged-previous type="button" aria-label="Previous page" disabled>←</button>
+            <button class="pager-arrow" data-paged-next type="button" aria-label="Next page">→</button>
           </div>
-        </div>
-        <div class="row mb-5">
-          
-
-
-          <div class="col-md-4 text-center">
-            <p class="mb-4">
-              <span class="icon-room d-block h2 text-primary"></span>
-              <span>Durban, South Africa, 4068</span>
-            </p>
-          </div>
-          <div class="col-md-4 text-center">
-            <p class="mb-4">
-              <span class="icon-phone d-block h2 text-primary"></span>
-              <a>+27 81 736 0195</a>
-            </p>
-          </div>
-          <div class="col-md-4 text-center">
-            <p class="mb-0">
-              <span class="icon-mail_outline d-block h2 text-primary"></span>
-              <a>suhailgovender1@gmail.com</a>
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 mb-5">
-
-            
-
-            
-
-  
-            </form>
-          </div>
-          
         </div>
       </div>
     </section>
 
-    
-    <footer class="site-footer">
-      <div class="container">
-        <h2 class="footer-heading mb-4">Follow Me</h2>
-              <div class="col-md-3 footer-social">
-                
-                <a href="https://www.facebook.com/suhail.govender" target="_blank" rel="noopener noreferrer" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                <a href="https://www.instagram.com/_suhail_g" target="_blank" rel="noopener noreferrer" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                <a href="https://www.linkedin.com/in/suhail-govender-2aa8752a6?trk=contact-info" target="_blank" rel="noopener noreferrer" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                
-              </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              <p>Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> All rights reserved | This website was made
-                by</i> <a href="#home-section" class="nav-link">Suhail Govender</a>
-              </p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        
-            </div>
-          </div>
-          
-        </div>
+    <section class="outside">
+      <div class="outside-inner section-wrap">
+        <div class="outside-art reveal"><div class="outside-lines"></div><img src="./images/hobby-placeholder.svg" alt="Replace with a personal photo that hints at your hobbies"><span class="outside-label">PERSONAL LOG / 04</span></div>
+         <div class="outside-copy reveal"><span class="mini-kicker">04 / OUTSIDE THE EDITOR</span><h2>There’s more<br>to me than <em>tabs.</em></h2><p>[Tell people what you love doing away from work. A hobby, a ritual, a place you return to — something that feels like you.]</p><ul class="hobby-list" aria-label="Hobbies"><li>[Hobby one]</li><li>[Hobby two]</li><li>[Hobby three]</li></ul><p class="outside-aside">Lately: [a book, a trail, a tiny obsession]</p><a class="underlined-link" href="#contact">Trade recommendations? <span aria-hidden="true">↗</span></a></div>
       </div>
-    </footer>
+    </section>
 
-  </div> <!-- .site-wrap -->
-
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-
-  
-  <script src="js/main.js"></script>
-
-
-  <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+    <section class="contact section-wrap" id="contact">
+      <div class="section-label section-label-light reveal"><span>05 / The next hello</span><span class="label-rule"></span><span>CONTACT</span></div>
+      <div class="contact-main reveal"><div><span class="mini-kicker">CONTACT / COLLABORATION / QUESTIONS</span><h2>Have a build<br>in mind? <em>Let’s talk.</em></h2></div><a class="contact-button" href="mailto:hello@example.com" aria-label="Email Your Name">Say hello <span aria-hidden="true">↗</span></a></div>
+      <div class="contact-bottom"><p>For project questions, collaboration, or a technical conversation.<br><a href="mailto:hello@example.com">hello@example.com</a> <span class="edit-hint">[Replace with your email]</span></p><div class="social-links" aria-label="Social media links">
+        <a href="[GITHUB_URL]" target="_blank" rel="noreferrer" aria-label="GitHub (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.2-1.5 6.2-7A5.5 5.5 0 0 0 18.8 4 5.1 5.1 0 0 0 18.7 0S17.5-.4 15 1.5a13.5 13.5 0 0 0-7 0C5.5-.4 4.3 0 4.3 0A5.1 5.1 0 0 0 4.2 4a5.5 5.5 0 0 0-1.5 3.9c0 5.5 3.2 6.7 6.2 7A3.4 3.4 0 0 0 8 17.6V22"/></svg><span>GitHub</span><b>↗</b></a>
+        <a href="[LINKEDIN_URL]" target="_blank" rel="noreferrer" aria-label="LinkedIn (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span><b>↗</b></a>
+        <a href="[SOCIAL_URL]" target="_blank" rel="noreferrer" aria-label="Social profile (replace link)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="dot-fill" cx="18" cy="6" r="1"/></svg><span>[Social]</span><b>↗</b></a>
+      </div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark">YN</span><span>Your Name<span class="wordmark-dot">.</span></span></a><span>Made with care, by <span class="replace">[Your name]</span>.</span><a href="#top" class="back-top">Back to the top ↑</a><span class="footer-year">© <span id="year">2025</span></span></footer>
+<script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
   <script src="https://files.bpcontent.cloud/2025/01/24/09/20250124091021-KW0GTUUJ.js"></script>
-      
-
-  </body>
+</body>
 </html>
